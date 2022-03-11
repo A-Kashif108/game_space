@@ -11,6 +11,7 @@ class _SearchBarState extends State<SearchBar> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
+        automaticallyImplyLeading: false,
         // The search area here
           title: Container(
             width: double.infinity,
@@ -31,7 +32,8 @@ class _SearchBarState extends State<SearchBar> {
                     border: InputBorder.none),
               ),
             ),
-          )),
+          )
+      ),
       body: SingleChildScrollView(
         scrollDirection: Axis.vertical,
         child: Column(

@@ -1,6 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
+import 'package:game_space/pages/home_page.dart';
 import 'package:game_space/pages/sign_in.dart';
 class ProfileSetup extends StatefulWidget {
   const ProfileSetup({Key? key}) : super(key: key);
@@ -86,7 +87,7 @@ class _ProfileSetupState extends State<ProfileSetup> {
             ElevatedButton(onPressed: (){
               Navigator.push(
                 context,
-                MaterialPageRoute(builder: (context) => const SignIn()),
+                MaterialPageRoute(builder: (context) => const MyHomePage()),
               );
             }, child: Text('Go', style: TextStyle(fontSize: 26)),
               style: ElevatedButton.styleFrom(
