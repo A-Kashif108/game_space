@@ -95,16 +95,15 @@ class _SignUpState extends State<SignUp> {
             ), //side: BorderSide(color: Colors.red)
             ),
             SizedBox(height: 20),
-            RichText(text: TextSpan(
-    text: 'already have an account?',
-    style:  TextStyle(color: Colors.black87),
-    recognizer: TapGestureRecognizer()
-    ..onTap = () {Navigator.push(
-      context,
-      MaterialPageRoute(builder: (context) => const SignIn()),
-    ); }
-            )
-            )
+            GestureDetector(
+              onTap: (){
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(builder: (context) => const SignIn()),
+                );
+              },
+              child: const Text("Already have an account?"),
+            ),
           ],
         ),
       ),
