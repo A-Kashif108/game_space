@@ -1,6 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
+import 'package:game_space/pages/profile_setup.dart';
 import 'package:game_space/pages/sign_in.dart';
 class SignUp extends StatefulWidget {
   const SignUp({Key? key}) : super(key: key);
@@ -81,7 +82,7 @@ class _SignUpState extends State<SignUp> {
             ElevatedButton(onPressed: (){
               Navigator.push(
                 context,
-                MaterialPageRoute(builder: (context) => const SignIn()),
+                MaterialPageRoute(builder: (context) => const ProfileSetup()),
               );
             }, child: Text('Register', style: TextStyle(fontSize: 26)),
             style: ElevatedButton.styleFrom(
