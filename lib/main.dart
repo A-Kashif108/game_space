@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:game_space/pages/home_page.dart';
+import 'package:game_space/pages/profile_setup.dart';
 import 'package:game_space/pages/sign_up.dart';
 
 void main() {
