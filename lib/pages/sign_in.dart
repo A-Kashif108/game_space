@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:game_space/pages/home_page.dart';
 
 class SignIn extends StatefulWidget {
   const SignIn({Key? key}) : super(key: key);
@@ -61,10 +62,10 @@ class _SignInState extends State<SignIn> {
             SizedBox(height:35),
 
             ElevatedButton(onPressed: (){
-              //Navigator.push(
-                //context,
-                //MaterialPageRoute(builder: (context) => const SignIn()),
-            //  );
+              Navigator.push(
+                context,
+                MaterialPageRoute(builder: (context) => const MyHomePage()),
+             );
             },
               child: Text('Sign-In', style: TextStyle(fontSize: 26)),
               style: ElevatedButton.styleFrom(
