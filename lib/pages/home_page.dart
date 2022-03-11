@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:game_space/pages/friends.dart';
+import 'package:game_space/pages/search.dart';
 import 'package:game_space/pages/sign_up.dart';
 
 class MyHomePage extends StatefulWidget {
@@ -46,6 +48,7 @@ class _MyHomePageState extends State<MyHomePage> {
     });
   }
   List _pages = [
-
+    FriendsList(),
+    SearchBar(),
   ];
 }
