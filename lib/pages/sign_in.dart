@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:game_space/pages/home_page.dart';
 
+import '../services/authentication.dart';
+
 class SignIn extends StatefulWidget {
   const SignIn({Key? key}) : super(key: key);
 
@@ -9,6 +11,9 @@ class SignIn extends StatefulWidget {
 }
 
 class _SignInState extends State<SignIn> {
+  final TextEditingController _emailController = TextEditingController();
+  final TextEditingController _passwordController = TextEditingController();
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -34,7 +39,8 @@ class _SignInState extends State<SignIn> {
                 padding: const EdgeInsets.fromLTRB(20, 0, 20, 0),
                 child: Center(
                   child: TextField(
-                      decoration:InputDecoration(hintText: '   E-Mail',
+                    controller: _emailController,
+                      decoration:const InputDecoration(hintText: '   E-Mail',
                         border: InputBorder.none,
                       ) ),
                 ),
@@ -52,6 +58,7 @@ class _SignInState extends State<SignIn> {
                 padding: const EdgeInsets.fromLTRB(20, 0, 20, 0),
                 child: Center(
                   child: TextField(
+                    controller: _passwordController,
                       decoration:InputDecoration(hintText: '   Password',
                         border: InputBorder.none,
                       ) ),
@@ -62,10 +69,21 @@ class _SignInState extends State<SignIn> {
             SizedBox(height:35),
 
             ElevatedButton(onPressed: (){
-              Navigator.push(
-                context,
-                MaterialPageRoute(builder: (context) => const MyHomePage()),
-             );
+              AuthenticationHelper()
+                  .signIn(email: _emailController.text, password: _passwordController.text)
+                  .then((result) {
+                if (result == null) {
+                  Navigator.pushReplacement(context,
+                      MaterialPageRoute(builder: (context) => const MyHomePage()));
+                } else {
+                  Scaffold.of(context).showSnackBar(SnackBar(
+                    content: Text(
+                      result,
+                      style: const TextStyle(fontSize: 16),
+                    ),
+                  ));
+                }
+              });
             },
               child: Text('Sign-In', style: TextStyle(fontSize: 26)),
               style: ElevatedButton.styleFrom(

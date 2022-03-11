@@ -1,7 +1,11 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
+import 'package:game_space/pages/home_page.dart';
+import 'package:game_space/pages/profile_setup.dart';
 import 'package:game_space/pages/sign_in.dart';
+
+import '../services/authentication.dart';
 class SignUp extends StatefulWidget {
   const SignUp({Key? key}) : super(key: key);
 
@@ -10,6 +14,11 @@ class SignUp extends StatefulWidget {
 }
 
 class _SignUpState extends State<SignUp> {
+  final TextEditingController _emailController = TextEditingController();
+  final TextEditingController _passwordController = TextEditingController();
+  final TextEditingController _confirmPasswordController = TextEditingController();
+
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -35,6 +44,7 @@ class _SignUpState extends State<SignUp> {
                 padding: const EdgeInsets.fromLTRB(20, 0, 20, 0),
                 child: Center(
                   child: TextField(
+                    controller: _emailController,
                       decoration:InputDecoration(hintText: '   E-Mail',
                         border: InputBorder.none,
                   ) ),
@@ -53,7 +63,10 @@ class _SignUpState extends State<SignUp> {
                 padding: const EdgeInsets.fromLTRB(20, 0, 20, 0),
                 child: Center(
                   child: TextField(
+                    obscureText: true,
+                    controller: _passwordController,
                       decoration:InputDecoration(hintText: '   Password',
+
                         border: InputBorder.none,
                   ) ),
                 ),
@@ -71,6 +84,7 @@ class _SignUpState extends State<SignUp> {
                 padding: const EdgeInsets.fromLTRB(20, 0, 20, 0),
                 child: Center(
                   child: TextField(
+                    controller: _confirmPasswordController,
                       decoration:InputDecoration(hintText: '  Confirm Password',
                         border: InputBorder.none,
                   ) ),
@@ -79,11 +93,24 @@ class _SignUpState extends State<SignUp> {
             ),
             SizedBox(height:40),
             ElevatedButton(onPressed: (){
-              Navigator.push(
-                context,
-                MaterialPageRoute(builder: (context) => const SignIn()),
-              );
-            }, child: Text('Register', style: TextStyle(fontSize: 26)),
+              AuthenticationHelper()
+                  .signUp(email: _emailController.text, password: _passwordController.text)
+                  .then((result) {
+                if (result == null) {
+                  Navigator.pushReplacement(context,
+                      MaterialPageRoute(builder: (context) => const MyHomePage()));
+                } else {
+                  Scaffold.of(context).showSnackBar(SnackBar(
+                    content: Text(
+                      result,
+                      style: TextStyle(fontSize: 16),
+                    ),
+                  ));
+                }
+              });
+
+            },
+              child: Text('Register', style: TextStyle(fontSize: 26)),
             style: ElevatedButton.styleFrom(
               primary: Colors.green,
               onPrimary: Colors.white,
