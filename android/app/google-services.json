@@ -1,0 +1,47 @@
+{
+  "project_info": {
+    "project_number": "500037295537",
+    "project_id": "gamespace-aa0ab",
+    "storage_bucket": "gamespace-aa0ab.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:500037295537:android:fb0b3a43b5f61f1d577190",
+        "android_client_info": {
+          "package_name": "com.example.game_space"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "500037295537-gl5tmhneb39u65m0sf67mi4fu19c9ilq.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.game_space",
+            "certificate_hash": "e2426af33272ec26805d625bfba440cb32c15596"
+          }
+        },
+        {
+          "client_id": "500037295537-l2oao7e17313mbfso0881piqtt44nrss.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDysnHX60fSiAl-7CRNOZR5zGIBvHVwO7o"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "500037295537-l2oao7e17313mbfso0881piqtt44nrss.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
