@@ -2,14 +2,14 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:game_space/pages/sign_in.dart';
-class SignUp extends StatefulWidget {
-  const SignUp({Key? key}) : super(key: key);
+class ProfileSetup extends StatefulWidget {
+  const ProfileSetup({Key? key}) : super(key: key);
 
   @override
-  _SignUpState createState() => _SignUpState();
+  _ProfileSetupState createState() => _ProfileSetupState();
 }
 
-class _SignUpState extends State<SignUp> {
+class _ProfileSetupState extends State<ProfileSetup> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -20,12 +20,17 @@ class _SignUpState extends State<SignUp> {
           crossAxisAlignment: CrossAxisAlignment.center,
           children: [
             Padding(
-              padding: const EdgeInsets.fromLTRB(0, 40, 0, 0),
-              child: Center(child: Text("SignUp",
-              style: TextStyle(fontSize: 28),
+              padding: const EdgeInsets.fromLTRB(0, 50, 0, 0),
+              child: Center(child: Text("ProfileSetup",
+                style: TextStyle(fontSize: 28),
               )),
             ),
-            SizedBox(height:100),
+            SizedBox(height: 40,),
+            CircleAvatar(
+              backgroundImage: NetworkImage('https://images.unsplash.com/photo-1494790108377-be9c29b29330?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8Mnx8cHJvZmlsZXxlbnwwfHwwfHw%3D&w=1000&q=80'),
+              radius: 65,
+            ),
+            SizedBox(height:60),
             Container(
               height: 60,
               //padding: const EdgeInsets.fromLTRB(0, 40, 0, 0),
@@ -35,9 +40,9 @@ class _SignUpState extends State<SignUp> {
                 padding: const EdgeInsets.fromLTRB(20, 0, 20, 0),
                 child: Center(
                   child: TextField(
-                      decoration:InputDecoration(hintText: '   E-Mail',
+                      decoration:InputDecoration(hintText: '   Username',
                         border: InputBorder.none,
-                  ) ),
+                      ) ),
                 ),
               ),
 
@@ -53,9 +58,9 @@ class _SignUpState extends State<SignUp> {
                 padding: const EdgeInsets.fromLTRB(20, 0, 20, 0),
                 child: Center(
                   child: TextField(
-                      decoration:InputDecoration(hintText: '   Password',
+                      decoration:InputDecoration(hintText: '   Name',
                         border: InputBorder.none,
-                  ) ),
+                      ) ),
                 ),
               ),
 
@@ -71,9 +76,9 @@ class _SignUpState extends State<SignUp> {
                 padding: const EdgeInsets.fromLTRB(20, 0, 20, 0),
                 child: Center(
                   child: TextField(
-                      decoration:InputDecoration(hintText: '  Confirm Password',
+                      decoration:InputDecoration(hintText: '  Enrollment no.',
                         border: InputBorder.none,
-                  ) ),
+                      ) ),
                 ),
               ),
             ),
@@ -83,25 +88,18 @@ class _SignUpState extends State<SignUp> {
                 context,
                 MaterialPageRoute(builder: (context) => const SignIn()),
               );
-            }, child: Text('Register', style: TextStyle(fontSize: 26)),
-            style: ElevatedButton.styleFrom(
-              primary: Colors.green,
-              onPrimary: Colors.white,
-              shadowColor: Colors.greenAccent,
-              elevation: 3,
-              shape: RoundedRectangleBorder(
-                  borderRadius: BorderRadius.circular(32.0)),
-              minimumSize: Size(200, 45), //////// HERE
-            ), //side: BorderSide(color: Colors.red)
+            }, child: Text('Go', style: TextStyle(fontSize: 26)),
+              style: ElevatedButton.styleFrom(
+                primary: Colors.green,
+                onPrimary: Colors.white,
+                shadowColor: Colors.greenAccent,
+                elevation: 3,
+                shape: RoundedRectangleBorder(
+                    borderRadius: BorderRadius.circular(32.0)),
+                minimumSize: Size(200, 45), //////// HERE
+              ), //side: BorderSide(color: Colors.red)
             ),
             SizedBox(height: 20),
-            RichText(text: TextSpan(
-    text: 'already have an account?',
-    style:  TextStyle(color: Colors.black87),
-    recognizer: TapGestureRecognizer()
-    ..onTap = () { }
-            )
-            )
           ],
         ),
       ),
