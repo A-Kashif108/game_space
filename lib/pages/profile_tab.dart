@@ -1,3 +1,5 @@
+
+
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 
@@ -50,10 +52,68 @@ class _ProfileTabState extends State<ProfileTab> {
                 ),
               ),
               SizedBox(height:30),
-              Container(height:40,width:MediaQuery.of(context).size.width,
-              decoration:BoxDecoration(color:Colors.grey),
-              )
+              Column(
+                children: [
+                  Container(height:70,width:MediaQuery.of(context).size.width,
+                  decoration:BoxDecoration(color:Colors.grey.shade400),
+                    child:Row(
+                      //mainAxisAlignment: MainAxisAlignment.spaceAround,
+                      children: [
+                        SizedBox(width:2),
 
+                        const CircleAvatar(
+                          backgroundImage: NetworkImage('https://upload.wikimedia.org/wikipedia/en/0/07/BGMI.jpg'),
+                          radius: 30,
+                        ),
+                        SizedBox(width:90),
+                     Text('BGMI',style: TextStyle(fontSize: 30),),
+                        SizedBox(width:90),
+                        ElevatedButton(onPressed: (){}, child: Text('Play')),
+                      ],
+                    ),
+                  ),
+                  Container(height:70,width:MediaQuery.of(context).size.width,
+                  decoration:BoxDecoration(color:Colors.grey.shade400),
+                    child:Row(
+                     // mainAxisAlignment: MainAxisAlignment.spaceAround,
+                      children: [
+                        SizedBox(width:2),
+
+                        Align(
+                          alignment: Alignment.centerLeft,
+                          child: const CircleAvatar(
+                            backgroundImage: NetworkImage('https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRNIMhGxwF6cZK_BqT_N7cML-ZPYDPOOkBRDw&usqp=CAU'),
+                            radius: 30,
+                          ),
+                        ),
+                        SizedBox(width:60),
+                     Text('Smashkart',style: TextStyle(fontSize: 30),),
+                        SizedBox(width:56),
+                        Align(
+                            alignment:Alignment.centerRight,
+                            child: ElevatedButton(onPressed: (){}, child: Text('Play'))),
+                      ],
+                    ),
+                  ),
+                  Container(height:70,width:MediaQuery.of(context).size.width,
+                  decoration:BoxDecoration(color:Colors.grey.shade400),
+                    child:Row(
+                      //mainAxisAlignment: MainAxisAlignment.spaceAround,
+                      children: [
+                        SizedBox(width:2),
+                        const CircleAvatar(
+                          backgroundImage: NetworkImage('https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRNxrSkTO6GYd_YSqvJTfhMS8RDCtxEVXUxKk1RYv-AL2KAlOugruN5cRZ5spcVCn_nekE&usqp=CAU'),
+                          radius: 30,
+                        ),
+                        SizedBox(width:95),
+                     Text('COD',style: TextStyle(fontSize: 30),),
+                        SizedBox(width:99),
+                        ElevatedButton(onPressed: (){}, child: Text('Play')),
+                      ],
+                    ),
+                  ),
+                ],
+              )
             ],
           ),
         ),
