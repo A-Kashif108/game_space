@@ -78,15 +78,15 @@ class _ProfileSetupState extends State<ProfileSetup> {
 
 
             const SizedBox(height:40),
-            ElevatedButton(onPressed: (){
-              FirebaseFirestore.instance.collection('UserData').doc(widget.user?.uid).set({
+            ElevatedButton(onPressed: () async{
+              await FirebaseFirestore.instance.collection('UserData').doc(widget.user?.uid).set({
                 "name" : _nameController.text,
                 "username" : _usernameController.text,
                 "email" : widget.user?.email,
               });
               Navigator.push(
                 context,
-                MaterialPageRoute(builder: (context) => const MyHomePage()),
+                MaterialPageRoute(builder: (context) =>  MyHomePage(user: widget.user,)),
               );
             }, child: const Text('Go', style: TextStyle(fontSize: 26)),
               style: ElevatedButton.styleFrom(

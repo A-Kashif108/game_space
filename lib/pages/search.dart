@@ -1,6 +1,11 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+import 'package:game_space/components/friend.dart';
+
 class SearchBar extends StatefulWidget {
-  const SearchBar({Key? key}) : super(key: key);
+  User? user;
+   SearchBar({Key? key,required this.user}) : super(key: key);
 
   @override
   State<SearchBar> createState() => _SearchBarState();
@@ -31,38 +36,27 @@ class _SearchBarState extends State<SearchBar> {
                     hintText: 'Search',
                     border: InputBorder.none),
               ),
-            ),
-          )
+            )
+          ),
       ),
-      body: SingleChildScrollView(
-        scrollDirection: Axis.vertical,
-        child: Column(
-          children: [
-            Padding(
-              padding: const EdgeInsets.all(16),
-              child: Container(
-                  child: Row(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      CircleAvatar(
-                        backgroundImage: NetworkImage('https://images.unsplash.com/photo-1494790108377-be9c29b29330?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8Mnx8cHJvZmlsZXxlbnwwfHwwfHw%3D&w=1000&q=80'),
-                        radius: 40,
-                      ),
-                      SizedBox(height: 10, width: 20,),
-                      Column(
-                        children: [
-                          Text(' Ayush Patidar', style: TextStyle(fontSize: 20)),
-                          Text(' @taatar_noobie', style: TextStyle(fontSize: 18)),
-                          Text('Playing BGMI', style: TextStyle(fontSize: 18)),
-                        ],
-                      )
-                    ],
-                  )
-              ),
-            ),
-          ],
-        ),
-      ),
+      body: StreamBuilder<QuerySnapshot>(
+          stream: FirebaseFirestore.instance.collection("UserData").snapshots(),
+          builder: (BuildContext context, AsyncSnapshot<QuerySnapshot> snapshot){
+            if(snapshot.hasData){
+              return ListView(
+                scrollDirection: Axis.vertical,
+                children: snapshot.data!.docs.map((DocumentSnapshot document) {
+                  Map<String, dynamic> data = document.data()! as Map<String, dynamic>;
+                  return  Friend(name: data["name"],
+                      username: data["username"], status: "status",
+                  uid: widget.user?.uid,
+                    friend: false,
+                  );
+                }).toList(),
+              );
+            }
+            return const Center(child: CircularProgressIndicator(),);
+          }),
     );
   }
 }

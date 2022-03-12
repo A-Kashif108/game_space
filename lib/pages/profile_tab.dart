@@ -1,8 +1,10 @@
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 
 import 'home_page.dart';
 class ProfileTab extends StatefulWidget {
-  const ProfileTab({Key? key}) : super(key: key);
+  final User? user;
+  const ProfileTab({Key? key, required this.user}) : super(key: key);
 
   @override
   State<ProfileTab> createState() => _ProfileTabState();
@@ -80,7 +82,7 @@ class _ProfileTabState extends State<ProfileTab> {
               ElevatedButton(onPressed: (){
                 Navigator.push(
                   context,
-                  MaterialPageRoute(builder: (context) => const MyHomePage()),
+                  MaterialPageRoute(builder: (context) =>  MyHomePage(user: widget.user,)),
                 );
               }, child: Text('Go', style: TextStyle(fontSize: 26)),
                 style: ElevatedButton.styleFrom(
