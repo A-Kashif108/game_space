@@ -36,23 +36,20 @@ class _SearchBarState extends State<SearchBar> {
             ),
           )
       ),
-      body: SingleChildScrollView(
-        scrollDirection: Axis.vertical,
-        child:  StreamBuilder<QuerySnapshot>(
-            stream: FirebaseFirestore.instance.collection("Userdata").snapshots(),
-            builder: (BuildContext context, AsyncSnapshot<QuerySnapshot> snapshot){
-              if(snapshot.hasData){
-                return ListView(
-                  scrollDirection: Axis.vertical,
-                  children: snapshot.data!.docs.map((DocumentSnapshot document) {
-                    Map<String, dynamic> data = document.data()! as Map<String, dynamic>;
-                    return  Friend(name: data['name'], username: data['username'], status: 'status');
-                  }).toList(),
-                );
-              }
-              return const Center(child: CircularProgressIndicator(),);
-            }),
-      ),
+      body: StreamBuilder<QuerySnapshot>(
+          stream: FirebaseFirestore.instance.collection("UserData").snapshots(),
+          builder: (BuildContext context, AsyncSnapshot<QuerySnapshot> snapshot){
+            if(snapshot.hasData){
+              return ListView(
+                scrollDirection: Axis.vertical,
+                children: snapshot.data!.docs.map((DocumentSnapshot document) {
+                  Map<String, dynamic> data = document.data()! as Map<String, dynamic>;
+                  return  Friend(name: data["name"], username: data["username"], status: "status");
+                }).toList(),
+              );
+            }
+            return const Center(child: CircularProgressIndicator(),);
+          }),
     );
   }
 }
