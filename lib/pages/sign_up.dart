@@ -81,6 +81,7 @@ class _SignUpState extends State<SignUp> {
                 padding: const EdgeInsets.fromLTRB(20, 0, 20, 0),
                 child: Center(
                   child: TextField(
+                    obscureText: true,
                     controller: _confirmPasswordController,
                       decoration:const InputDecoration(hintText: '  Confirm Password',
                         border: InputBorder.none,

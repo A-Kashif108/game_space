@@ -1,7 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:game_space/pages/friends.dart';
+import 'package:game_space/pages/profile_setup.dart';
+import 'package:game_space/pages/profile_tab.dart';
 import 'package:game_space/pages/search.dart';
 import 'package:game_space/pages/sign_up.dart';
+import 'package:game_space/pages/watch.dart';
 
 class MyHomePage extends StatefulWidget {
   const MyHomePage({Key? key}) : super(key: key);
@@ -50,5 +53,7 @@ class _MyHomePageState extends State<MyHomePage> {
   List _pages = [
     FriendsList(),
     SearchBar(),
+    WatchStream(),
+    ProfileTab(),
   ];
 }
