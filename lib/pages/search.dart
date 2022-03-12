@@ -1,3 +1,5 @@
+
+
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
@@ -43,17 +45,25 @@ class _SearchBarState extends State<SearchBar> {
           stream: FirebaseFirestore.instance.collection("UserData").snapshots(),
           builder: (BuildContext context, AsyncSnapshot<QuerySnapshot> snapshot){
             if(snapshot.hasData){
-              return ListView(
-                scrollDirection: Axis.vertical,
-                children: snapshot.data!.docs.map((DocumentSnapshot document) {
-                  Map<String, dynamic> data = document.data()! as Map<String, dynamic>;
-                  return  Friend(name: data["name"],
-                      username: data["username"], status: "status",
+                return ListView(
+                  scrollDirection: Axis.vertical,
+                  children: snapshot.data!.docs.map((
+                      DocumentSnapshot document) {
+                    Map<String, dynamic> data = document.data()! as Map<
+                        String,
+                        dynamic>;
+              if (document.id != widget.user?.uid) {
+                return Friend(name: data["name"],
+                  username: data["username"],
+                  status: "status",
                   uid: widget.user?.uid,
-                    friend: false,
-                  );
-                }).toList(),
-              );
+                  friend: false,
+                );
+              }
+                    return SizedBox(height: 0, width: 0,);
+                  }).toList(),
+                );
+
             }
             return const Center(child: CircularProgressIndicator(),);
           }),
