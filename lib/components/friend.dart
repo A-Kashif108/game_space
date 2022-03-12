@@ -1,3 +1,4 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 class Friend extends StatefulWidget {
   final String name;
@@ -17,6 +18,8 @@ class _FriendState extends State<Friend> {
     return Padding(
       padding: const EdgeInsets.all(16),
       child: Container(
+        height: 80,
+          width: MediaQuery.of(context).size.width,
           child: Row(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
@@ -26,12 +29,29 @@ class _FriendState extends State<Friend> {
               ),
               const SizedBox(height: 10, width: 20,),
               Column(
+                mainAxisAlignment: MainAxisAlignment.center,
+                crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   Text(widget.name, style: TextStyle(fontSize: 20)),
                   Text(widget.username, style: TextStyle(fontSize: 18)),
                   Text(widget.status, style: TextStyle(fontSize: 18)),
                 ],
-              )
+              ),
+              SizedBox(height: 10, width: 40,),
+              Align(
+                alignment: Alignment.centerRight,
+                child: ElevatedButton(onPressed: (){},
+                    child: Icon(Icons.add),
+                  style: ElevatedButton.styleFrom(
+                    primary: Colors.green,
+                    onPrimary: Colors.white,
+                    shadowColor: Colors.greenAccent,
+                    elevation: 3,
+                    shape: CircleBorder(//////// HERE
+                  ),
+                    ),
+                ),
+              ),
             ],
           )
       ),
