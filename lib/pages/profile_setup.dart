@@ -1,16 +1,22 @@
-import 'package:flutter/cupertino.dart';
-import 'package:flutter/gestures.dart';
+import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:game_space/pages/home_page.dart';
-import 'package:game_space/pages/sign_in.dart';
+
 class ProfileSetup extends StatefulWidget {
-  const ProfileSetup({Key? key}) : super(key: key);
+  final User? user;
+   const ProfileSetup({Key? key,required this.user}) : super(key: key);
 
   @override
   _ProfileSetupState createState() => _ProfileSetupState();
 }
 
 class _ProfileSetupState extends State<ProfileSetup> {
+
+  final TextEditingController _nameController = TextEditingController();
+  final TextEditingController _usernameController = TextEditingController();
+  final TextEditingController _enrollNoController = TextEditingController();
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -20,76 +26,69 @@ class _ProfileSetupState extends State<ProfileSetup> {
           mainAxisAlignment: MainAxisAlignment.start,
           crossAxisAlignment: CrossAxisAlignment.center,
           children: [
-            Padding(
-              padding: const EdgeInsets.fromLTRB(0, 50, 0, 0),
+            const Padding(
+              padding: EdgeInsets.fromLTRB(0, 50, 0, 0),
               child: Center(child: Text("ProfileSetup",
                 style: TextStyle(fontSize: 28),
               )),
             ),
-            SizedBox(height: 40,),
-            CircleAvatar(
+            const SizedBox(height: 40,),
+            const CircleAvatar(
               backgroundImage: NetworkImage('https://images.unsplash.com/photo-1494790108377-be9c29b29330?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8Mnx8cHJvZmlsZXxlbnwwfHwwfHw%3D&w=1000&q=80'),
               radius: 65,
             ),
-            SizedBox(height:60),
+            const SizedBox(height:60),
             Container(
               height: 60,
               //padding: const EdgeInsets.fromLTRB(0, 40, 0, 0),
               width: MediaQuery.of(context).size.width*0.8,
-              decoration: BoxDecoration(color: Color(0xffebe9e9), borderRadius:BorderRadius.circular(400)),
-              child: Padding(
+              decoration: BoxDecoration(color: const Color(0xffebe9e9), borderRadius:BorderRadius.circular(400)),
+              child:  Padding(
                 padding: const EdgeInsets.fromLTRB(20, 0, 20, 0),
                 child: Center(
                   child: TextField(
-                      decoration:InputDecoration(hintText: '   Username',
+                    controller: _usernameController,
+                      decoration:const InputDecoration(hintText: '   Username',
                         border: InputBorder.none,
                       ) ),
                 ),
               ),
 
             ),
-            SizedBox(height:35),
+            const SizedBox(height:35),
 
             Container(
               height: 60,
               //padding: const EdgeInsets.fromLTRB(0, 40, 0, 0),
               width: MediaQuery.of(context).size.width*0.8,
-              decoration: BoxDecoration(color: Color(0xffebe9e9), borderRadius:BorderRadius.circular(400)),
-              child: Padding(
+              decoration: BoxDecoration(color: const Color(0xffebe9e9), borderRadius:BorderRadius.circular(400)),
+              child:  Padding(
                 padding: const EdgeInsets.fromLTRB(20, 0, 20, 0),
                 child: Center(
                   child: TextField(
-                      decoration:InputDecoration(hintText: '   Name',
+                    controller: _nameController,
+                      decoration:const InputDecoration(hintText: '   Name',
                         border: InputBorder.none,
                       ) ),
                 ),
               ),
 
             ),
-            SizedBox(height:35),
+            const SizedBox(height:35),
 
-            Container(
-              height: 60,
-              //padding: const EdgeInsets.fromLTRB(0, 40, 0, 0),
-              width: MediaQuery.of(context).size.width*0.8,
-              decoration: BoxDecoration(color: Color(0xffebe9e9), borderRadius:BorderRadius.circular(400)),
-              child: Padding(
-                padding: const EdgeInsets.fromLTRB(20, 0, 20, 0),
-                child: Center(
-                  child: TextField(
-                      decoration:InputDecoration(hintText: '  Enrollment no.',
-                        border: InputBorder.none,
-                      ) ),
-                ),
-              ),
-            ),
-            SizedBox(height:40),
+
+            const SizedBox(height:40),
             ElevatedButton(onPressed: (){
+              FirebaseFirestore.instance.collection('UserData').doc(widget.user?.uid).set({
+                "name" : _nameController.text,
+                "username" : _usernameController.text,
+                "email" : widget.user?.email,
+              });
               Navigator.push(
                 context,
                 MaterialPageRoute(builder: (context) => const MyHomePage()),
               );
-            }, child: Text('Go', style: TextStyle(fontSize: 26)),
+            }, child: const Text('Go', style: TextStyle(fontSize: 26)),
               style: ElevatedButton.styleFrom(
                 primary: Colors.green,
                 onPrimary: Colors.white,
@@ -97,10 +96,10 @@ class _ProfileSetupState extends State<ProfileSetup> {
                 elevation: 3,
                 shape: RoundedRectangleBorder(
                     borderRadius: BorderRadius.circular(32.0)),
-                minimumSize: Size(200, 45), //////// HERE
+                minimumSize: const Size(200, 45), //////// HERE
               ), //side: BorderSide(color: Colors.red)
             ),
-            SizedBox(height: 20),
+            const SizedBox(height: 20),
           ],
         ),
       ),

@@ -23,18 +23,18 @@ class _SignInState extends State<SignIn> {
           mainAxisAlignment: MainAxisAlignment.start,
           crossAxisAlignment: CrossAxisAlignment.center,
           children: [
-            Padding(
-              padding: const EdgeInsets.fromLTRB(0, 40, 0, 0),
+            const Padding(
+              padding: EdgeInsets.fromLTRB(0, 40, 0, 0),
               child: Center(child: Text("Sign-In",
                 style: TextStyle(fontSize: 28),
               )),
             ),
-            SizedBox(height:100),
+            const SizedBox(height:100),
             Container(
               height: 60,
               //padding: const EdgeInsets.fromLTRB(0, 40, 0, 0),
               width: MediaQuery.of(context).size.width*0.8,
-              decoration: BoxDecoration(color: Color(0xffebe9e9), borderRadius:BorderRadius.circular(400)),
+              decoration: BoxDecoration(color: const Color(0xffebe9e9), borderRadius:BorderRadius.circular(400)),
               child: Padding(
                 padding: const EdgeInsets.fromLTRB(20, 0, 20, 0),
                 child: Center(
@@ -47,26 +47,26 @@ class _SignInState extends State<SignIn> {
               ),
 
             ),
-            SizedBox(height:35),
+            const SizedBox(height:35),
 
             Container(
               height: 60,
               //padding: const EdgeInsets.fromLTRB(0, 40, 0, 0),
               width: MediaQuery.of(context).size.width*0.8,
-              decoration: BoxDecoration(color: Color(0xffebe9e9), borderRadius:BorderRadius.circular(400)),
+              decoration: BoxDecoration(color: const Color(0xffebe9e9), borderRadius:BorderRadius.circular(400)),
               child: Padding(
                 padding: const EdgeInsets.fromLTRB(20, 0, 20, 0),
                 child: Center(
                   child: TextField(
                     controller: _passwordController,
-                      decoration:InputDecoration(hintText: '   Password',
+                      decoration:const InputDecoration(hintText: '   Password',
                         border: InputBorder.none,
                       ) ),
                 ),
               ),
 
             ),
-            SizedBox(height:35),
+            const SizedBox(height:35),
 
             ElevatedButton(onPressed: (){
               AuthenticationHelper()
@@ -76,7 +76,7 @@ class _SignInState extends State<SignIn> {
                   Navigator.pushReplacement(context,
                       MaterialPageRoute(builder: (context) => const MyHomePage()));
                 } else {
-                  Scaffold.of(context).showSnackBar(SnackBar(
+                  ScaffoldMessenger.of(context).showSnackBar(SnackBar(
                     content: Text(
                       result,
                       style: const TextStyle(fontSize: 16),
@@ -85,7 +85,7 @@ class _SignInState extends State<SignIn> {
                 }
               });
             },
-              child: Text('Sign-In', style: TextStyle(fontSize: 26)),
+              child: const Text('Sign-In', style: TextStyle(fontSize: 26)),
               style: ElevatedButton.styleFrom(
                 primary: Colors.green,
                 onPrimary: Colors.white,
@@ -93,7 +93,7 @@ class _SignInState extends State<SignIn> {
                 elevation: 3,
                 shape: RoundedRectangleBorder(
                     borderRadius: BorderRadius.circular(32.0)),
-                minimumSize: Size(200, 45), //////// HERE
+                minimumSize: const Size(200, 45), //////// HERE
               ), //side: BorderSide(color: Colors.red)
             ),
           ],

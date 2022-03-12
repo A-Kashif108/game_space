@@ -1,11 +1,12 @@
 
 
 import 'package:firebase_auth/firebase_auth.dart';
+import 'package:flutter/foundation.dart';
 
 
 
 class AuthenticationHelper {
-  final FirebaseAuth _auth = FirebaseAuth.instance;
+   final FirebaseAuth _auth = FirebaseAuth.instance;
   get user => _auth.currentUser;
 
   //SIGN UP METHOD
@@ -37,6 +38,8 @@ class AuthenticationHelper {
   Future signOut() async {
     await _auth.signOut();
 
-    print('signout');
+    if (kDebugMode) {
+      print('signOut');
+    }
   }
 }
