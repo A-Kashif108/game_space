@@ -78,8 +78,8 @@ class _ProfileSetupState extends State<ProfileSetup> {
 
 
             const SizedBox(height:40),
-            ElevatedButton(onPressed: (){
-              FirebaseFirestore.instance.collection('UserData').doc(widget.user?.uid).set({
+            ElevatedButton(onPressed: () async{
+              await FirebaseFirestore.instance.collection('UserData').doc(widget.user?.uid).set({
                 "name" : _nameController.text,
                 "username" : _usernameController.text,
                 "email" : widget.user?.email,
