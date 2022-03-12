@@ -86,7 +86,7 @@ class _ProfileSetupState extends State<ProfileSetup> {
               });
               Navigator.push(
                 context,
-                MaterialPageRoute(builder: (context) => const MyHomePage()),
+                MaterialPageRoute(builder: (context) =>  MyHomePage(user: widget.user,)),
               );
             }, child: const Text('Go', style: TextStyle(fontSize: 26)),
               style: ElevatedButton.styleFrom(

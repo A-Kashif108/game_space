@@ -1,8 +1,11 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:game_space/components/friend.dart';
+
 class SearchBar extends StatefulWidget {
-  const SearchBar({Key? key}) : super(key: key);
+  User? user;
+   SearchBar({Key? key,required this.user}) : super(key: key);
 
   @override
   State<SearchBar> createState() => _SearchBarState();
@@ -44,7 +47,11 @@ class _SearchBarState extends State<SearchBar> {
                 scrollDirection: Axis.vertical,
                 children: snapshot.data!.docs.map((DocumentSnapshot document) {
                   Map<String, dynamic> data = document.data()! as Map<String, dynamic>;
-                  return  Friend(name: data["name"], username: data["username"], status: "status");
+                  return  Friend(name: data["name"],
+                      username: data["username"], status: "status",
+                  uid: widget.user?.uid,
+                    friend: false,
+                  );
                 }).toList(),
               );
             }

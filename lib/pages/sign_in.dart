@@ -1,3 +1,4 @@
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:game_space/pages/home_page.dart';
 
@@ -74,7 +75,9 @@ class _SignInState extends State<SignIn> {
                   .then((result) {
                 if (result == null) {
                   Navigator.pushReplacement(context,
-                      MaterialPageRoute(builder: (context) => const MyHomePage()));
+                      MaterialPageRoute(
+                          builder: (context) =>  MyHomePage(user: FirebaseAuth.instance.currentUser ,)),
+                  );
                 } else {
                   ScaffoldMessenger.of(context).showSnackBar(SnackBar(
                     content: Text(
