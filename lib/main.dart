@@ -1,6 +1,7 @@
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:game_space/pages/home_page.dart';
+import 'package:game_space/pages/open.dart';
 import 'package:game_space/pages/profile_setup.dart';
 import 'package:game_space/pages/sign_up.dart';
 
@@ -31,7 +32,7 @@ class MyApp extends StatelessWidget {
         // is not restarted.
         primarySwatch: Colors.blue,
       ),
-      home: const SignUp(),
+      home: const frontend(),
     );
   }
 }

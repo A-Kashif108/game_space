@@ -31,7 +31,7 @@ class _ProfileTabState extends State<ProfileTab> {
               SizedBox(height:10),
               Padding(
                 padding: const EdgeInsets.fromLTRB(20, 0, 20, 0),
-                child: Text('Username',style: TextStyle(fontSize:16),),
+                child: Text('Username',style: TextStyle(fontSize:20),),
                 ),
 
 
@@ -40,12 +40,13 @@ class _ProfileTabState extends State<ProfileTab> {
               Padding(
                 padding: const EdgeInsets.fromLTRB(20, 0, 20, 0),
                 child: Center(
-                  child:  Text('name',style: TextStyle(fontSize:14),),
+                  child:  Text('name',style: TextStyle(fontSize:16),),
                 ),
               ),
-              SizedBox(height:70),
+              SizedBox(height:50),
 
               Padding(
+
                 padding: const EdgeInsets.fromLTRB(20, 0, 20, 0),
                 child: Center(
                   child:  Text('email-id',style: TextStyle(fontSize:22),),
