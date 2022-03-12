@@ -1,3 +1,4 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 class SearchBar extends StatefulWidget {
   const SearchBar({Key? key}) : super(key: key);
@@ -55,7 +56,13 @@ class _SearchBarState extends State<SearchBar> {
                           Text(' @taatar_noobie', style: TextStyle(fontSize: 18)),
                           Text('Playing BGMI', style: TextStyle(fontSize: 18)),
                         ],
-                      )
+                      ),
+                      SizedBox(height: 10, width: 60,),
+                      ElevatedButton(onPressed: (){},
+                          child: Container(
+                            decoration: BoxDecoration(shape: BoxShape.circle),
+                            child: Icon(Icons.add),
+                          ))
                     ],
                   )
               ),
