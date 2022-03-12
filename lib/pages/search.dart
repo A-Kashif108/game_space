@@ -34,7 +34,7 @@ class _SearchBarState extends State<SearchBar> {
                     border: InputBorder.none),
               ),
             ),
-          )
+          ),
       ),
       body: StreamBuilder<QuerySnapshot>(
           stream: FirebaseFirestore.instance.collection("UserData").snapshots(),
