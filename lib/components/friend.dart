@@ -22,6 +22,7 @@ class _FriendState extends State<Friend> {
           width: MediaQuery.of(context).size.width,
           child: Row(
             crossAxisAlignment: CrossAxisAlignment.start,
+            mainAxisAlignment: MainAxisAlignment.spaceAround,
             children: [
               const CircleAvatar(
                 backgroundImage: NetworkImage('https://images.unsplash.com/photo-1494790108377-be9c29b29330?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8Mnx8cHJvZmlsZXxlbnwwfHwwfHw%3D&w=1000&q=80'),
@@ -38,8 +39,8 @@ class _FriendState extends State<Friend> {
                 ],
               ),
               SizedBox(height: 10, width: 40,),
-              Align(
-                alignment: Alignment.centerRight,
+              Container(
+                alignment: Alignment.topCenter,
                 child: ElevatedButton(onPressed: (){},
                     child: Icon(Icons.add),
                   style: ElevatedButton.styleFrom(
