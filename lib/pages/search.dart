@@ -33,7 +33,7 @@ class _SearchBarState extends State<SearchBar> {
                     hintText: 'Search',
                     border: InputBorder.none),
               ),
-            ),
+            )
           ),
       ),
       body: StreamBuilder<QuerySnapshot>(
