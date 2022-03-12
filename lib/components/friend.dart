@@ -25,9 +25,10 @@ class _FriendState extends State<Friend> {
           width: MediaQuery.of(context).size.width,
           child: Row(
             crossAxisAlignment: CrossAxisAlignment.start,
-            mainAxisAlignment: MainAxisAlignment.spaceAround,
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
-              const CircleAvatar(
+              Row(
+              children: [const CircleAvatar(
                 backgroundImage: NetworkImage('https://images.unsplash.com/photo-1494790108377-be9c29b29330?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8Mnx8cHJvZmlsZXxlbnwwfHwwfHw%3D&w=1000&q=80'),
                 radius: 40,
               ),
@@ -36,10 +37,12 @@ class _FriendState extends State<Friend> {
                 mainAxisAlignment: MainAxisAlignment.center,
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  Text(widget.name, style: const TextStyle(fontSize: 20)),
+                  Text(widget.name, style: const TextStyle(fontSize: 20), textAlign: TextAlign.left,),
                   Text(widget.username, style: const TextStyle(fontSize: 18)),
                   Text(widget.status, style: const TextStyle(fontSize: 18)),
                 ],
+              ),
+      ]
               ),
               const SizedBox(height: 10, width: 40,),
               Container(
