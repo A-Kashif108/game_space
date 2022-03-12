@@ -40,6 +40,7 @@ class _SignInState extends State<SignIn> {
                 padding: const EdgeInsets.fromLTRB(20, 0, 20, 0),
                 child: Center(
                   child: TextField(
+                    obscureText: true,
                     controller: _emailController,
                       decoration:const InputDecoration(hintText: '   E-Mail',
                         border: InputBorder.none,
