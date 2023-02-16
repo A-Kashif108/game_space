@@ -22,8 +22,8 @@ Our app provides a lot of features which are as follows:
 
 ## Current Version
 
-This app is currently in development phase and many features will be added later on.
-In our current version,
+This app is currently current development phase and many features will be added later on.
+In this current version,
 1. Our UI is ready.
 And on the backend part,
 2. SignUp/SignIn page is working along with the firebase database.
