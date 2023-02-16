@@ -1,3 +1,11 @@
+# game_space
+
+Name | Enrollment Number
+---- | ----
+Akshat Chaudhary | 21114009
+Asadullah Kashif | 21114020
+
+
 # Project GameSpace
 
 **Gamespace will provide options for gamers(casual or professional) to communicate with each other, share their interests, and play together. This app will allow the user to connect to people who play same games as they do and show the status of someone in the game, make the team, and have fun together. It also allows the user to stream it's gameplay as well as watch that of other players.**
@@ -30,5 +38,6 @@ And on the backend part,
 3. Profile Setup is working(except profile pic change).
 4. Showing all the registered users in the **search** tab.
 5. Adding people to your friends list.
+
 
 
